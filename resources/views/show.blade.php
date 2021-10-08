@@ -6,6 +6,14 @@
     <p>{{$products->description}}</p>
     <p>${{$products->price}}</p>
     <a href="/products/{{$products->id}}/edit">Edit</a>
-    <a href="/products/{{$products->id}}">Delete</a>
+
+    <form action="/product/{{$products->id}}" method="POST">
+      @csrf
+      @method('delete')
+      <input type="submit" name="_method" value="delete" class="btn btn-danger btn-icon">
+      {{-- <button type="submit" class="btn btn-danger btn-icon">
+        delete <i data-feather="delete"></i>
+      </button> --}}
+    </form>
   </div>
 @endsection

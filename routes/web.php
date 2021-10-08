@@ -22,6 +22,6 @@ Route::get('/products', [HomeController::class, 'products'])->name('products');
 Route::get('/products/{id}', [HomeController::class, 'show']);
 Route::get('/products/{id}/edit', [HomeController::class, 'edit']);
 Route::put('/edit/{id}', [HomeController::class, 'update']);
-Route::delete('/product/{id}', [HomeController::class, 'destroy']);
+Route::delete('/product/{id}', [HomeController::class, 'destroy'])->name('destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');

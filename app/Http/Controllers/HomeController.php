@@ -47,5 +47,6 @@ class HomeController extends Controller
 
     public function destroy($id) {
         Product::destroy($id);
+         return redirect('/products')->with('success', 'Product deleted successfully');
     }
 }
