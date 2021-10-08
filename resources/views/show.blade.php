@@ -6,6 +6,6 @@
     <p>{{$products->description}}</p>
     <p>${{$products->price}}</p>
     <a href="/products/{{$products->id}}/edit">Edit</a>
-    <a>Delete</a>
+    <a href="/products/{{$products->id}}">Delete</a>
   </div>
 @endsection

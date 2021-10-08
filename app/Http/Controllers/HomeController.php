@@ -44,4 +44,8 @@ class HomeController extends Controller
         $products->save();
         return redirect('/products')->with('success', 'Product has been successfully updated');
     }
+
+    public function destroy($id) {
+        Product::destroy($id);
+    }
 }
