@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', [HomeController::class, 'products'])->name('products');
+Route::get('/products', [HomeController::class, 'products']);
 Route::get('/products/create', [HomeController::class, 'create']);
 Route::post('/products', [HomeController::class, 'store']);
 Route::get('/products/{id}', [HomeController::class, 'show']);
