@@ -5,6 +5,7 @@
     <h1>{{$products->name}}</h1>
     <p>{{$products->description}}</p>
     <p>${{$products->price}}</p>
+    <p>{{$products->image}}</p>
     <a href="/products/{{$products->id}}/edit">Edit</a>
 
     <form action="/product/{{$products->id}}" method="POST">

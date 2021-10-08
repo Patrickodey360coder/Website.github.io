@@ -10,7 +10,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        $products = Product::all();
+        return view('welcome')->with('products', $products);
     }
 
     public function products(){
@@ -26,13 +27,31 @@ class HomeController extends Controller
 
     public function store(Request $request) {
         $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required'
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif',
         ]);
 
-        Product::create($request->all());
-        return view('products')->with('success', 'Product added successfully');
+        $products = Product::create($request->all());
+        $products->save();
+        if ($request->hasFile('image')) {
+
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+
+            //Get Filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+            //Get just Extension
+
+            $extension = $request->file('image')->getClientOriginalExtension();
+
+            //filename to store
+            $fileNameToStore = $filename. '_'. time().'.'.$extension;
+
+            $path = $request->file('image')->storeAs('public/image', $fileNameToStore);
+        }
+        return redirect('/')->with('success', 'Product added successfully');
     }
 
     public function show($id)
@@ -54,14 +73,12 @@ class HomeController extends Controller
             'price' => 'required'
         ]);
 
-        $products = Product::find($id);
-        $products->update($request->all());
-        $products->save();
-        return redirect('/products')->with('success', 'Product has been successfully updated');
+        Product::find($id)->update($request->all());
+        return redirect('/')->with('success', 'Product has been successfully updated');
     }
 
     public function destroy($id) {
         Product::destroy($id);
-         return redirect('/products')->with('success', 'Product deleted successfully');
+         return redirect('/')->with('success', 'Product deleted successfully');
     }
 }

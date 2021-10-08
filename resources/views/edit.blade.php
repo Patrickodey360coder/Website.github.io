@@ -5,7 +5,6 @@
       @method('PUT')
       @csrf
 
-      {{$errors}}
       <input type="text" placeholder="name" value="{{$products->name}}" name="name"><br><br>
       @error('name')
         <div class="alert alert-danger">{{ $message }}</div>  

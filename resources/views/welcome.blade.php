@@ -1,9 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Hello world</h1>  
-    <h3>Welcome to my store</h3>  
-    <a href="{{url('/products')}}"><h3>Click here to view products</h3></a>
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+        {{session()->get('success')}}  
+        </div>  
+    @endif
+      
+    {{-- <a href="{{url('/products')}}"><h3>Click here to view products</h3></a> --}}
+
+    {{-- {{dd($products)}} --}}
+
+    @if (($products->count() > 0))
+      <h3>Welcome to my store</h3>
+      @foreach ($products as $product)
+        <div style="margin: 2em">
+          <a href="/products/{{$product->id}}">{{$product->name}} - ${{$product->price}}</a>
+        </div>
+      @endforeach
+        
+    @else
+     
+        <h1 class="text-danger">There are no products to be displayed</h1>
+        <a href="{{url('products/create')}}" class="btn btn-primary">Add Products</a>
+      
+    @endif
 @endsection
 
 
