@@ -33,12 +33,15 @@ class HomeController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
+
         $products = Product::find($id);
-        // $products->name = $request->name;
-        // $products->description = $request->description;
-        // $products->price = $request->price;
         $products->update($request->all());
         $products->save();
-        return redirect('/products');
+        return redirect('/products')->with('success', 'Product has been successfully updated');
     }
 }

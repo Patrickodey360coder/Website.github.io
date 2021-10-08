@@ -1,4 +1,47 @@
-<!DOCTYPE html>
+@extends('layouts.app')
+
+@section('content')
+    <h1>Hello world</h1>  
+    <h3>Welcome to my store</h3>  
+    <a href="{{url('/products')}}"><h3>Click here to view products</h3></a>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -66,4 +109,4 @@
     <body>
         
     </body>
-</html>
+</html> --}}
