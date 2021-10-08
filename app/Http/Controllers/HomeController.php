@@ -20,6 +20,21 @@ class HomeController extends Controller
         ]);
     }
 
+    public function create() {
+        return view('create');
+    }
+
+    public function store(Request $request) {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
+
+        Product::create($request->all());
+        return view('products')->with('success', 'Product added successfully');
+    }
+
     public function show($id)
     {
         $products = Product::find($id);

@@ -19,6 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/products', [HomeController::class, 'products'])->name('products');
+Route::get('/products/create', [HomeController::class, 'create']);
+Route::post('/products', [HomeController::class, 'store']);
 Route::get('/products/{id}', [HomeController::class, 'show']);
 Route::get('/products/{id}/edit', [HomeController::class, 'edit']);
 Route::put('/edit/{id}', [HomeController::class, 'update']);
