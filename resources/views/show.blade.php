@@ -11,9 +11,6 @@
       @csrf
       @method('delete')
       <input type="submit" name="_method" value="delete" class="btn btn-danger btn-icon">
-      {{-- <button type="submit" class="btn btn-danger btn-icon">
-        delete <i data-feather="delete"></i>
-      </button> --}}
     </form>
   </div>
 @endsection
